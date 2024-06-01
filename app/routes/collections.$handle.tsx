@@ -1,10 +1,10 @@
-import {json, redirect, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
-import {useLoaderData, Link, type MetaFunction} from '@remix-run/react';
+import {json, type LoaderFunctionArgs, redirect} from '@shopify/remix-oxygen';
+import {Link, type MetaFunction, useLoaderData} from '@remix-run/react';
 import {
-  Pagination,
   getPaginationVariables,
   Image,
   Money,
+  Pagination,
 } from '@shopify/hydrogen';
 import type {ProductItemFragment} from 'storefrontapi.generated';
 import {useVariantUrl} from '~/lib/variants';
@@ -33,8 +33,34 @@ export async function loader({request, params, context}: LoaderFunctionArgs) {
       status: 404,
     });
   }
-  return json({collection});
+
+  // Generate the SEO data for the collection page
+  const seo = generateSEO(collection);
+
+  return json({collection, seo});
 }
+
+// Function to generate SEO data for the collection page
+const generateSEO = (collection: any) => {
+  let seo = {
+    title: 'Default Collection Title', // Default title in case the collection doesn't have a title
+    description: 'Default Collection Description', // Default description in case the collection doesn't have a description
+  };
+
+  if (collection) {
+    // If collection has title and description, use them for SEO
+    seo.title = collection.title || seo.title;
+    seo.description = collection.description || seo.description;
+  }
+
+  // Truncate the description to 155 characters if needed
+  seo.description =
+    seo.description.length > 155
+      ? `${seo.description.slice(0, 152)}...`
+      : seo.description;
+
+  return seo;
+};
 
 export default function Collection() {
   const {collection} = useLoaderData<typeof loader>();

@@ -1,4 +1,4 @@
-import {useNonce} from '@shopify/hydrogen';
+import {Seo, useNonce} from '@shopify/hydrogen';
 import {defer, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import {
   isRouteErrorResponse,
@@ -102,6 +102,7 @@ export default function App() {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
+        <Seo />
         <Links />
       </head>
       <body>
