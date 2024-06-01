@@ -1,15 +1,15 @@
 import {useNonce} from '@shopify/hydrogen';
 import {defer, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import {
+  isRouteErrorResponse,
   Links,
   Meta,
   Outlet,
   Scripts,
-  useRouteError,
-  useLoaderData,
   ScrollRestoration,
-  isRouteErrorResponse,
   type ShouldRevalidateFunction,
+  useLoaderData,
+  useRouteError,
 } from '@remix-run/react';
 import favicon from './assets/favicon.svg';
 import resetStyles from './styles/reset.css?url';

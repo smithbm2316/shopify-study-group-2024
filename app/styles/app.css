@@ -6,6 +6,9 @@
   --header-height: 64px;
   --color-dark: #000;
   --color-light: #fff;
+
+  background-color: var(--color-dark);
+  color: var(--color-light);
 }
 
 img {
@@ -18,7 +21,7 @@ img {
 * --------------------------------------------------
 */
 aside {
-  background: var(--color-light);
+  background: var(--color-dark);
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
   height: 100vh;
   max-width: var(--aside-width);
@@ -129,7 +132,8 @@ aside li {
 */
 .header {
   align-items: center;
-  background: #fff;
+  background: var(--color-dark);
+  color: var(--color-light);
   display: flex;
   height: var(--header-height);
   padding: 0 1rem;
@@ -257,7 +261,8 @@ aside li {
 }
 
 .predictive-search-form {
-  background: var(--color-light);
+  background: var(--color-dark);
+  color: var(--color-light);
   position: sticky;
   top: 0;
 }
@@ -298,8 +303,6 @@ aside li {
   align-items: center;
   gap: 1rem;
 }
-
-
 
 /*
 * --------------------------------------------------
